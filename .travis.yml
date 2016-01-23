@@ -1,0 +1,14 @@
+sudo: false
+language: php
+php:
+  - 5.5
+
+before_script:
+  COMPOSER_ROOT_VERSION=dev-master composer install
+
+install:
+  - composer install;
+  - composer update;
+
+script:
+  - composer test
