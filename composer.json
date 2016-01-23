@@ -1,0 +1,40 @@
+{
+  "name": "moxie-leean/cpt",
+  "description": "Craate custom post types more easily",
+  "keywords": ["wordpress", "cpt", "post types"],
+  "homepage": "https://github.com/moxie-leean/cpt",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Crisoforo Gaspar Hernandez",
+      "email": "github@crisoforo.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Leean\\": "src/"
+    }
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "2.*",
+    "wp-coding-standards/wpcs": "dev-master"
+  },
+  "scripts": {
+    "installSniffer": [
+      "./vendor/bin/phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs/",
+      "./vendor/bin/phpcs --config-set default_standard ./codesniffer.ruleset.xml",
+      "./vendor/bin/phpcs --config-set show_progress 0",
+      "./vendor/bin/phpcs --config-set colors 1"
+    ],
+    "post-install-cmd": [ "@installSnifferj" ],
+    "post-update-cmd": [ "@installSniffer" ],
+    "test": [
+      "phpcs src/*.php"
+    ]
+  }
+}
+
