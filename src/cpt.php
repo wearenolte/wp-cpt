@@ -290,7 +290,7 @@ class CPT {
 	 */
 	private function label( $str = '' ) {
 		if ( is_string( $str ) && ! empty( $str ) ) {
-			return esc_html__( $str , TRANSLATED_TEXT_DOMAIN );
+			return esc_html__( $str , 'Leean' );
 		} else {
 			return '';
 		}
