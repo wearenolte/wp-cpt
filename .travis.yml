@@ -1,14 +1,14 @@
-sudo: false
 language: php
+sudo: false
 php:
-  - 5.5
+  - 5.4
 
 before_script:
-  COMPOSER_ROOT_VERSION=dev-master composer install
-
-install:
-  - composer install;
-  - composer update;
+  - npm install
+  - composer self-update -q
+  - composer install
+  - composer update --prefer-lowest -n
+  - composer update -n
 
 script:
   - composer test
