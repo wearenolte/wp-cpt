@@ -11,7 +11,7 @@
 /**
  * Abstraction to avoid repeated code and create multiple CPT:
  */
-class CPT {
+class Cpt {
 	/**
 	 * The singular name of the custom post type.
 	 *
