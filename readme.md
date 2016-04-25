@@ -1,4 +1,4 @@
-# [Custom Post Types](https://github.com/moxie-leean/cpt)
+# [Custom Post Types](https://github.com/moxie-leean/wp-cpt)
 
 > This library will allow you to create more easily custom post types for wordpress without too much effort.
 
@@ -8,18 +8,18 @@ The easiest way to install this package is by using composer from your
 terminal:
 
 ```bash
-composer require moxie-leean/cpt
+composer require moxie-lean/cpt
 ```
 
 Or by adding the following lines on your `composer.json` file
 
 ```json
 "require": {
-  "moxie-leean/cpt": "dev-master"
+  "moxie-lean/cpt": "dev-master"
 }
 ```
 
-This will download the file from the [packagist site](https://.org/packages/moxie-leean/cpt) 
+This will download the file from the [packagist site](https://.org/packages/moxie-lean/cpt) 
 and the latest version located on master branch of the repository. 
 
 After that you can need to include the `autoload.php` file in order to
@@ -35,7 +35,7 @@ might need to add the function in the `init` action as an example:
 
 ```php
 add_action( 'init', function() {
-    $testimonials = new \Leean\Cpt([
+    $testimonials = new \Lean\Cpt([
         'singular' => 'Testimonial',
         'plural' => 'Testimonials',
         'post_type' => 'testimonials',

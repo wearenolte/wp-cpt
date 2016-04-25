@@ -1,4 +1,4 @@
-<?php namespace Leean;
+<?php namespace Lean;
 /**
  * Class to crate new CPT files wiout to much repeated code.
  *
@@ -290,7 +290,7 @@ class Cpt {
 	 */
 	private function label( $str = '' ) {
 		if ( is_string( $str ) && ! empty( $str ) ) {
-			return esc_html__( $str , 'Leean' );
+			return esc_html__( $str , 'Lean' );
 		} else {
 			return '';
 		}
