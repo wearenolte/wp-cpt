@@ -8,18 +8,18 @@ The easiest way to install this package is by using composer from your
 terminal:
 
 ```bash
-composer require moxie-lean/cpt
+composer require moxie-lean/wp-cpt
 ```
 
 Or by adding the following lines on your `composer.json` file
 
 ```json
 "require": {
-  "moxie-lean/cpt": "dev-master"
+  "moxie-lean/wp-cpt": "dev-master"
 }
 ```
 
-This will download the file from the [packagist site](https://.org/packages/moxie-lean/cpt) 
+This will download the file from the [packagist site](https://packagist.org/packages/moxie-lean/wp-cpt) 
 and the latest version located on master branch of the repository. 
 
 After that you can need to include the `autoload.php` file in order to
