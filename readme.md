@@ -1,4 +1,4 @@
-# [Custom Post Types](https://github.com/moxie-leean/wp-cpt)
+# [Custom Post Types](https://github.com/moxie-lean/wp-cpt)
 
 > This library will allow you to create more easily custom post types for wordpress without too much effort.
 

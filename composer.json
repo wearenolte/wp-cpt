@@ -2,7 +2,7 @@
   "name": "moxie-lean/wp-cpt",
   "description": "Craate custom post types more easily",
   "keywords": ["wordpress", "cpt", "post types"],
-  "homepage": "https://github.com/moxie-leean/wp-cpt",
+  "homepage": "https://github.com/moxie-lean/wp-cpt",
   "type": "library",
   "license": "MIT",
   "authors": [
