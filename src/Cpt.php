@@ -150,13 +150,13 @@ class Cpt {
 			}
 		}
 
-		if ( isset( $options['args'] ) ) {
-			$this->args = wp_parse_args( $options['args'], $this->args );
-		}
-
 		$this->set_default_labels();
 		$this->set_default_rewrite();
 		$this->set_default_args();
+		
+		if ( isset( $options['args'] ) ) {
+			$this->args = wp_parse_args( $options['args'], $this->args );
+		}
 	}
 
 	/**
