@@ -153,7 +153,7 @@ class Cpt {
 		$this->set_default_labels();
 		$this->set_default_rewrite();
 		$this->set_default_args();
-		
+
 		if ( isset( $options['args'] ) ) {
 			$this->args = wp_parse_args( $options['args'], $this->args );
 		}
@@ -176,7 +176,10 @@ class Cpt {
 	 */
 	public function init() {
 		if ( ! post_type_exists( $this->post_type ) ) {
-			register_post_type( $this->post_type, $this->args );
+			$post_type = register_post_type( $this->post_type, $this->args );
+			if ( is_wp_error( $post_type ) ) {
+				return $post_type;
+			}
 		}
 		if ( '' !== $this->title_placeholder ) {
 			add_filter( 'enter_title_here', array( $this, 'update_placeholder' ) );
