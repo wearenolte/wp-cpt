@@ -1,6 +1,6 @@
 {
-  "name": "moxie-lean/wp-cpt",
-  "description": "Craate custom post types more easily",
+  "name": "nolte/wp-cpt",
+  "description": "Create custom post types easier.",
   "keywords": ["wordpress", "cpt", "post types"],
   "homepage": "https://github.com/moxie-lean/wp-cpt",
   "type": "library",
