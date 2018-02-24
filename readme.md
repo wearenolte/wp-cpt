@@ -8,7 +8,7 @@ The easiest way to install this package is by using composer from your
 terminal:
 
 ```bash
-composer require moxie-lean/wp-cpt
+composer require wearenolte/wp-cpt
 ```
 
 Or by adding the following lines on your `composer.json` file
