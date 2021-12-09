@@ -262,7 +262,7 @@ class Cpt {
 			'new_item' => $this->interpolate( 'New %s', $this->singular ),
 			'edit_item' => $this->interpolate( 'Edit %s', $this->singular ),
 			'add_new_item' => $this->interpolate( 'Add New %s', $this->singular ),
-			'view_item' => $this->interpolate( 'View %S', $this->singular ),
+			'view_item' => $this->interpolate( 'View %s', $this->singular ),
 			'menu_name' => $this->interpolate( '%s', $this->plural ),
 			'search_items' => $this->interpolate( 'Search %s', $this->plural ),
 			'not_found' => $this->interpolate( 'No %s found.', $this->plural ),
