@@ -1,4 +1,6 @@
-<?php namespace Lean;
+<?php
+namespace Lean;
+
 /**
  * Class to crate new CPT files wiout to much repeated code.
  *
@@ -100,29 +102,29 @@ class Cpt {
 	 */
 	protected $args = array(
 		// Make this post type be visible to authors and site visitors.
-		'public' => true,
+		'public'              => true,
 		// Exclude this from the default search, but not from the custom one.
-		'exclude_from_search'  => true,
+		'exclude_from_search' => true,
 		// Let this post type be queried for on the front-end via parse_request().
-		'publicly_queryable' => true,
+		'publicly_queryable'  => true,
 		// Display the user interface of this post type.
-		'show_ui' => true,
+		'show_ui'             => true,
 		// This post type is not available for selection on navigation menus.
-		'show_in_nav_menus' => false,
+		'show_in_nav_menus'   => false,
 		// Show the post type in the admin menu. Relies on show_ui being true.
-		'show_in_menu' => true,
+		'show_in_menu'        => true,
 		// Leave this at default 'post'. This string is used to build the read/edit/delete capabilities.
-		'capability_type' => 'post',
+		'capability_type'     => 'post',
 		// Disallow hierarchy or parent/child relationship.
-		'hierarchical' => false,
+		'hierarchical'        => false,
 		// Icon to use for this menu.
-		'menu_icon' => 'dashicons-wordpress',
+		'menu_icon'           => 'dashicons-wordpress',
 		// Disable post type archive for this.
-		'has_archive' => false,
+		'has_archive'         => false,
 		// Allow this post type to be exported.
-		'can_export' => true,
+		'can_export'          => true,
 		// Make this the fifth top-level menu in the the dashboard.
-		'menu_position' => 5,
+		'menu_position'       => 5,
 	);
 
 	/**
@@ -194,16 +196,18 @@ class Cpt {
 	 * @since 0.1.0
 	 */
 	private function set_default_args() {
-		$this->set_args(array(
-			// The array of labels to use in the UI for this post type.
-			'labels' => $this->labels,
-			// Array of supported fields ( title, editor, thumbnail, etc ).
-			'supports' => $this->supports,
-			// We use the query var 'store' as opposed to the post type 'acf-store'.
-			'query_var' => strtolower( $this->singular ),
-			// Triggers the handling of re-writes for this post-type.
-			'rewrite' => $this->rewrite,
-		));
+		$this->set_args(
+			array(
+				// The array of labels to use in the UI for this post type.
+				'labels'    => $this->labels,
+				// Array of supported fields ( title, editor, thumbnail, etc ).
+				'supports'  => $this->supports,
+				// We use the query var 'store' as opposed to the post type 'acf-store'.
+				'query_var' => strtolower( $this->singular ),
+				// Triggers the handling of re-writes for this post-type.
+				'rewrite'   => $this->rewrite,
+			)
+		);
 	}
 
 	/**
@@ -240,7 +244,7 @@ class Cpt {
 	 *
 	 * @param mixed $default Reference to the original values.
 	 * @param array $new_values The array with the new values to be updated on
-	 *							the default variable.
+	 *                          the default variable.
 	 */
 	public function merge( &$default, $new_values ) {
 		if ( is_array( $new_values ) && ! empty( $new_values ) ) {
@@ -255,17 +259,17 @@ class Cpt {
 	 */
 	private function set_default_labels() {
 		$this->labels = array(
-			'name' => $this->interpolate( '%s', $this->plural ),
-			'singular_name' => $this->interpolate( '%s', $this->singular ),
-			'add_new' => $this->interpolate( 'Add New' ),
-			'all_items' => $this->interpolate( 'All %s', $this-> plural ),
-			'new_item' => $this->interpolate( 'New %s', $this->singular ),
-			'edit_item' => $this->interpolate( 'Edit %s', $this->singular ),
-			'add_new_item' => $this->interpolate( 'Add New %s', $this->singular ),
-			'view_item' => $this->interpolate( 'View %s', $this->singular ),
-			'menu_name' => $this->interpolate( '%s', $this->plural ),
-			'search_items' => $this->interpolate( 'Search %s', $this->plural ),
-			'not_found' => $this->interpolate( 'No %s found.', $this->plural ),
+			'name'               => $this->interpolate( '%s', $this->plural ),
+			'singular_name'      => $this->interpolate( '%s', $this->singular ),
+			'add_new'            => $this->interpolate( 'Add New' ),
+			'all_items'          => $this->interpolate( 'All %s', $this->plural ),
+			'new_item'           => $this->interpolate( 'New %s', $this->singular ),
+			'edit_item'          => $this->interpolate( 'Edit %s', $this->singular ),
+			'add_new_item'       => $this->interpolate( 'Add New %s', $this->singular ),
+			'view_item'          => $this->interpolate( 'View %s', $this->singular ),
+			'menu_name'          => $this->interpolate( '%s', $this->plural ),
+			'search_items'       => $this->interpolate( 'Search %s', $this->plural ),
+			'not_found'          => $this->interpolate( 'No %s found.', $this->plural ),
 			'not_found_in_trash' => $this->interpolate( 'No %s found in trash.', $this->plural ),
 		);
 	}
@@ -290,11 +294,11 @@ class Cpt {
 	 * @since 0.1.0
 	 *
 	 * @param string $str The string to be used in the label.
-	 * @return string The escpaed and translated label.
+	 * @return string The escaped and translated label.
 	 */
 	private function label( $str = '' ) {
 		if ( is_string( $str ) && ! empty( $str ) ) {
-			return esc_html__( $str , 'Lean' );
+			return esc_html__( $str, 'Lean' ); // phpcs:ignore -- The $text arg must be a single string literal, not "$str".
 		} else {
 			return '';
 		}
@@ -308,7 +312,7 @@ class Cpt {
 	private function set_default_rewrite() {
 		$this->rewrite = array(
 			// Customize the permalink structure slug. Should be translatable.
-			'slug' => $this->interpolate( '%s', $this->slug ),
+			'slug'       => $this->interpolate( '%s', $this->slug ),
 
 			/*
 			 * Do not prepend the front base to the permalink strucure.
@@ -356,9 +360,11 @@ class Cpt {
 	 */
 	private function update_arg( $name = '', $value = '' ) {
 		if ( ! empty( $name ) ) {
-			$this->set_args( array(
-				$name => $value,
-			));
+			$this->set_args(
+				array(
+					$name => $value,
+				)
+			);
 		}
 	}
 
@@ -372,7 +378,7 @@ class Cpt {
 	 * @return string $title The new title
 	 */
 	public function update_placeholder( $title ) {
-		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		$screen      = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 		$current_cpt = is_object( $screen ) && property_exists( $screen, 'post_type' )
 			? $screen->post_type
 			: '';
