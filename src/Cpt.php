@@ -67,7 +67,7 @@ class Cpt {
 	 * @access protected
 	 * @var array
 	 */
-	protected $labels = array();
+	protected $labels = [];
 
 	/**
 	 * Holsd the handling of rewrites for this post type using an array
@@ -76,7 +76,7 @@ class Cpt {
 	 * @access protected
 	 * @var array
 	 */
-	protected $rewrite = array();
+	protected $rewrite = [];
 
 	/**
 	 * Holsd the supports of certain feature(s) for a given post type.
@@ -86,12 +86,12 @@ class Cpt {
 	 * @access protected
 	 * @var array
 	 */
-	protected $supports = array(
+	protected $supports = [
 		'title',
 		'editor',
 		'thumbnail',
 		'page-attributes',
-	);
+	];
 
 	/**
 	 * Has all of the arguments to be used to create the CPT.
@@ -100,7 +100,7 @@ class Cpt {
 	 * @access protected
 	 * @var array
 	 */
-	protected $args = array(
+	protected $args = [
 		// Make this post type be visible to authors and site visitors.
 		'public'              => true,
 		// Exclude this from the default search, but not from the custom one.
@@ -125,7 +125,7 @@ class Cpt {
 		'can_export'          => true,
 		// Make this the fifth top-level menu in the the dashboard.
 		'menu_position'       => 5,
-	);
+	];
 
 	/**
 	 * PHP5 Constructor
@@ -139,13 +139,13 @@ class Cpt {
 	 *     @type string slug The slug of the CPT.
 	 * }
 	 */
-	public function __construct( $options = array() ) {
+	public function __construct( $options = [] ) {
 		if ( ! is_array( $options ) ) {
 			return;
 		}
 
 		// Set dynamic values to each instance variable.
-		$values = array( 'post_type', 'singular', 'plural', 'slug', 'title_placeholder', 'supports' );
+		$values = [ 'post_type', 'singular', 'plural', 'slug', 'title_placeholder', 'supports' ];
 		foreach ( $values as $value ) {
 			if ( array_key_exists( $value, $options ) ) {
 				$this->$value = $options[ $value ];
@@ -167,7 +167,7 @@ class Cpt {
 	 * @since 0.1.0
 	 */
 	public function register() {
-		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'init', [ $this, 'init' ] );
 	}
 
 	/**
@@ -184,7 +184,7 @@ class Cpt {
 			}
 		}
 		if ( '' !== $this->title_placeholder ) {
-			add_filter( 'enter_title_here', array( $this, 'update_placeholder' ) );
+			add_filter( 'enter_title_here', [ $this, 'update_placeholder' ] );
 		}
 	}
 
@@ -197,7 +197,7 @@ class Cpt {
 	 */
 	private function set_default_args() {
 		$this->set_args(
-			array(
+			[
 				// The array of labels to use in the UI for this post type.
 				'labels'    => $this->labels,
 				// Array of supported fields ( title, editor, thumbnail, etc ).
@@ -206,7 +206,7 @@ class Cpt {
 				'query_var' => strtolower( $this->singular ),
 				// Triggers the handling of re-writes for this post-type.
 				'rewrite'   => $this->rewrite,
-			)
+			]
 		);
 	}
 
@@ -258,7 +258,7 @@ class Cpt {
 	 * @since 0.10
 	 */
 	private function set_default_labels() {
-		$this->labels = array(
+		$this->labels = [
 			'name'               => $this->interpolate( '%s', $this->plural ),
 			'singular_name'      => $this->interpolate( '%s', $this->singular ),
 			'add_new'            => $this->interpolate( 'Add New' ),
@@ -271,7 +271,7 @@ class Cpt {
 			'search_items'       => $this->interpolate( 'Search %s', $this->plural ),
 			'not_found'          => $this->interpolate( 'No %s found.', $this->plural ),
 			'not_found_in_trash' => $this->interpolate( 'No %s found in trash.', $this->plural ),
-		);
+		];
 	}
 
 	/**
@@ -310,7 +310,7 @@ class Cpt {
 	 * @since 0.1.0
 	 */
 	private function set_default_rewrite() {
-		$this->rewrite = array(
+		$this->rewrite = [
 			// Customize the permalink structure slug. Should be translatable.
 			'slug'       => $this->interpolate( '%s', $this->slug ),
 
@@ -321,7 +321,7 @@ class Cpt {
 			 * false->/news/, true->/blog/news/
 			 */
 			'with_front' => false,
-		);
+		];
 	}
 
 	/**
