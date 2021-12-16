@@ -15,11 +15,11 @@ Or by adding the following lines on your `composer.json` file
 
 ```json
 "require": {
-  "moxie-lean/wp-cpt": "dev-master"
+  "wearenolte/wp-cpt": "dev-master"
 }
 ```
 
-This will download the file from the [packagist site](https://packagist.org/packages/moxie-lean/wp-cpt) 
+This will download the file from the [packagist site](https://packagist.org/packages/wearenolte/wp-cpt) 
 and the latest version located on master branch of the repository. 
 
 After that you can need to include the `autoload.php` file in order to

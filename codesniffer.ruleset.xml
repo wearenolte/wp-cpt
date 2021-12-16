@@ -10,5 +10,7 @@
     <exclude name="Squiz.Commenting.FileComment" />
     <exclude name="Squiz.Commenting.FunctionComment" />
     <exclude name="WordPress.Files.FileName" />
+    <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
+    <exclude name="WordPress.NamingConventions.ValidHookName" />
   </rule>
 </ruleset>
